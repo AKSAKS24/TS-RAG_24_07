@@ -7,6 +7,7 @@ from app.generator import create_spec_document
 load_dotenv()
 app = FastAPI(title="SAP ABAP Spec Generator")
 
+
 @app.post("/generate_spec/")
 async def generate_spec(
     requirement: str = Form(...),

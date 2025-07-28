@@ -8,11 +8,12 @@ from langchain_community.document_loaders import TextLoader
 from app.docs_writer import write_docx_report
 from uuid import uuid4
 
-def retrieve_rag_context(requirement, rag_knowledge_path="rag_know1.txt", k=5):
-    # Load RAG knowledge base and build vector store
+
+def retrieve_rag_context(requirement, rag_knowledge_path, k=5):
+    # Load RAG knowledge base and build vector store    
     loader = TextLoader(rag_knowledge_path, encoding='utf-8')
-    docs = loader.load()
-    splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
+    docs = loader.load()    
+    splitter = RecursiveCharacterTextSplitter(chunk_size=2000, chunk_overlap=100)
     split_docs = splitter.split_documents(docs)
     embeddings = OpenAIEmbeddings()
     db = Chroma.from_documents(split_docs, embeddings)
@@ -74,7 +75,8 @@ def create_spec_document(requirement, template):
     and returns path to generated .docx file.
     """
     # Step 1: RAG contextualization
-    context = retrieve_rag_context(requirement)
+    rag_knowledge_path = os.path.join(os.path.dirname(__file__), "rag_know1.txt")
+    context = retrieve_rag_context(requirement, rag_knowledge_path)
 
     # Step 2: AGENTIC/LLM expansion (can add even more reasoning/tools here)
     detailed_doc_text = agentic_expand(requirement, context, template)
