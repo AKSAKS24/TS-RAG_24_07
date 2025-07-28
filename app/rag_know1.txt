@@ -1,0 +1,92 @@
+You are a SAP Technical Architect. 
+Please find below the comprehensive outline of required sections and content for the SAP Technical Design Specification. 
+Kindly ensure each point is addressed with professional depth, SAP best practices, and appropriate technical detail. 
+The expectation is that this structure be expanded into a full technical specification and solution architecture for the project.
+
+1. Document Control & Overview
+Document Title/ID
+System/Client
+Author
+Date and Version
+Approvers & Sign-off
+Revision history/change log
+2. Purpose & Objective
+Business rationale for the development or enhancement.
+Value proposition and pain points addressed.
+Criticality in the business context and links to strategic goals (e.g., compliance, efficiency, digitalization).
+Gap analysis: Why the SAP standard is insufficient, including specific limitations/gaps.
+Reference all relevant requirements/FRS/URS/change requests.
+Explicit intended business outcomes and success criteria.
+3. Scope
+In-scope objects, processes, modules.
+Out-of-scope exclusions.
+SAP clients/mandants covered.
+Integration points with other systems.
+4. Functional Overview
+Detailed business process flow.
+Process triggers (manual, automated, event-based, etc.).
+SAP modules and components involved.
+Data journey and exception/alternative flows.
+Stakeholder scenarios and referenced use cases.
+List and description of all related SAP tcodes, batch jobs, and cross-functional impacts.
+5. Solution Architecture & Approach
+High-level architecture diagram and narrative.
+Execution type(s): report, interface, enhancement, BAPI, workflow, OData, etc.
+Entry and exit criteria.
+Assumptions/prerequisites.
+Overview of user interaction with the solution.
+6. Detailed Design
+6.1 Selection Screen & Input Design
+
+Layout, fields, mandatory/optional status, dynamic logic, and data validation.
+6.2 Output Design
+
+Output media (ALV, SmartForm, Excel, PDF, etc.), layout, field definitions, export logic, and mockups.
+6.3 Data Model / Database Design
+
+Detailed table/entity list (incl. standard, custom, master, extension tables), ER diagrams, join logic, and access methods.
+Field-level operations and constraints.
+Buffering/caching strategies.
+Maintenance and audit implications.
+6.4 Technical Processing Logic (Mandatory)
+Pseudo-code for core batch job:
+detailed technical explanation of the requirement file in Normal English mentioning each detail for SAP developer usage.
+Explanation: of the select query with where condition and joining condition aamong different tables.
+Explanation: of loop and complex iteration, what is the use of it ?
+
+- Error Handling:
+   - Capture all failed records in ZSALES_ERR for reprocessing by support team.
+   - Raise warning messages (Message class ZS, numbers 001–009).
+   - For fatal failures, email responsible group using SAPConnect.
+
+Comments:
+- All data validation is done in-memory before making any BAPIs to avoid partial commits.
+- Loop processing limited to 1000 records per batch (parameterized).
+- Audit log entries created in ZSALES_LOG.
+
+6.5 Code Structure & Modularity
+
+Program name(s), includes, function groups, ABAP classes/methods, FMs/BAPIs used, events/form routines, enhancements, standard vs. custom logic, and reusable components.
+6.6 Interface Design (If applicable)
+
+Source/target systems, data mapping, file/interface specs, SAP integration technologies, error handling, sequencing, and documentation diagrams.
+7. Security & Authorization
+Required auth objects, sensitive data controls, role mapping, and error handling.
+8. Performance & Optimization
+Expected data/transaction volumes, critical performance points, batch/parallel handling, and tuning strategies.
+9. Error, Exception & Message Handling
+Error handling matrix, message class/numbering, and escalation/reprocessing procedures.
+10. Logging & Audit Trail
+Audit requirements, what/where is logged, retention, and traceability.
+11. Testing Approach
+Coverage for all scenarios, data requirements, regression/negative tests, and results tracking.
+12. Transport & Deployment Details
+Objects to transport, sequences, post-transport steps, and deployment checklist.
+13. Impact Analysis
+Impacted business processes/systems, risks, backward compatibility, downtime, and continuity planning.
+14. Assumptions & Limitations
+List of all business, system, and technical assumptions as well as open issues and known limitations.
+15. Appendix & References
+Glossary, SAP notes, supporting documentation, mockups, sample data, code fragments, versioning, and compliance references.
+Action required:
+Please expand each section with the necessary depth and documentation fidelity suitable for technical review, design authority sign-off, 

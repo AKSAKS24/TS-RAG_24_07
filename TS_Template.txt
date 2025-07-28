@@ -1,0 +1,3 @@
+SAP Technical Specification (TS) Template Pointers:
+Purpose, Scope, Functional Overview, System Landscape, Selection Screen Design, Output Layout, Input/Output Specifications, SAP Tables, Data Flow Diagram, Processing Logic (Pseudo Code), Program Structure (Includes, FM, Classes), Interfaces/BAPIs/Exits, Security Authorizations, Error Handling, Performance Notes, Testing Approach, Impact Analysis, Appendix.
+
