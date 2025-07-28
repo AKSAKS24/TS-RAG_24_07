@@ -5,7 +5,7 @@ from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import TextLoader
-from docs_writer import write_docx_report
+from app.docs_writer import write_docx_report
 from uuid import uuid4
 
 def retrieve_rag_context(requirement, rag_knowledge_path="rag_know1.txt", k=5):

@@ -2,7 +2,7 @@ import os
 from fastapi import FastAPI, Form
 from starlette.responses import FileResponse
 from dotenv import load_dotenv
-from generator import create_spec_document
+from app.generator import create_spec_document
 
 load_dotenv()
 app = FastAPI(title="SAP ABAP Spec Generator")
